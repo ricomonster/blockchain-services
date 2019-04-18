@@ -1,0 +1,13 @@
+{
+  "devDependencies": {
+    "jest": "^24.7.1",
+    "serverless-plugin-include-dependencies": "^3.2.1"
+  },
+  "dependencies": {
+    "bignumber.js": "^8.1.1",
+    "bitcoinjs-lib": "^5.0.2",
+    "ethereumjs-wallet": "^0.6.3",
+    "isaac": "^0.0.5",
+    "web3": "^1.0.0-beta.52"
+  }
+}
