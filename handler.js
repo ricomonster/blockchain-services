@@ -8,13 +8,23 @@ const Blockchain = require('./library/blockchain');
  */
 const Handlers = {
   generate: async (event) => {
-    console.log('e', event);
     // stores the blockchain instance
     let blockchain;
 
+    // perform some simple validation
+    if (!event.pathParameters || !event.pathParameters.blockchain) {
+      return {
+        statusCode: 400,
+        body: JSON.stringify({
+          message: 'Invalid request.'
+        })
+      }
+    }
+
+    // let's try to load the blockchain service
     try {
       blockchain = Blockchain.load(
-        event.blockchain || '',
+        event.pathParameters.blockchain || '',
         process.env.BLOCKCHAIN_NETWORK || ''
       );
     } catch (e) {
@@ -22,7 +32,7 @@ const Handlers = {
       return {
         statusCode: 404,
         body: JSON.stringify({
-          message: e.message
+          message: e || 'Unsupported blockchain.'
         })
       }
     }
