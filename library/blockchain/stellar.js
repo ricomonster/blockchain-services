@@ -24,16 +24,12 @@ class Stellar extends BlockchainInterface {
    * @return {Object}
    */
   async generate() {
-    try {
-      // generate keys
-      const pair = StellarSdk.Keypair.random();
+    // generate keys
+    const pair = StellarSdk.Keypair.random();
 
-      return {
-        address: pair.publicKey(),
-        private_key: pair.secret(),
-      }
-    } catch (e) {
-      throw(e.message || 'Could not generate stellar wallet.');
+    return {
+      address: pair.publicKey(),
+      private_key: pair.secret(),
     }
   }
 }

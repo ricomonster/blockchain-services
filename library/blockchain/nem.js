@@ -36,24 +36,20 @@ class NEM extends BlockchainInterface {
    * @return {Object}
    */
   async generate() {
-    try {
-      // create private key via random bytes from PRNG and convert to hex
-      const rBytes      = nem.crypto.nacl.randomBytes(32);
-      const privateKey  = nem.utils.convert.ua2hex(rBytes);
+    // create private key via random bytes from PRNG and convert to hex
+    const rBytes      = nem.crypto.nacl.randomBytes(32);
+    const privateKey  = nem.utils.convert.ua2hex(rBytes);
 
-      // create key keyPair
-      const nemKeyPair = nem.crypto.keyPair.create(privateKey);
+    // create key keyPair
+    const nemKeyPair = nem.crypto.keyPair.create(privateKey);
 
-      // get address based on public key
-      const address = nem.model.address.toAddress(nemKeyPair.publicKey.toString(), this.provider)
+    // get address based on public key
+    const address = nem.model.address.toAddress(nemKeyPair.publicKey.toString(), this.provider)
 
-      return {
-        address,
-        public_key: nemKeyPair.publicKey.toString(),
-        private_key: privateKey
-      }
-    } catch (e) {
-      throw(e.message || 'Could not generate nem wallet.');
+    return {
+      address,
+      public_key: nemKeyPair.publicKey.toString(),
+      private_key: privateKey
     }
   }
 }

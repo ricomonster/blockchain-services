@@ -41,7 +41,7 @@ class Bitcoin extends BlockchainInterface {
         private_key: keyPair.toWIF(),
       }
     } catch (e) {
-      throw(e.message || 'Could not generate bitcoin wallet.');
+      throw e.message || 'Could not generate bitcoin wallet.';
     }
   }
 

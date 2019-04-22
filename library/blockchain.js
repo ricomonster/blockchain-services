@@ -32,7 +32,7 @@ class Blockchain {
         return new Stellar(network);
 
       default:
-        throw('Unknown blockchain.');
+        throw 'Unknown blockchain.';
     }
   }
 }

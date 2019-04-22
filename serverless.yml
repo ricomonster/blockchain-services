@@ -59,12 +59,12 @@ functions:
     handler: handler.generate
     events:
       - http:
-        path: /{blockchain}/wallet/generate
-        method: get
-        request:
-          parameters:
-            paths:
-              blockchain: true
+          path: /{blockchain}/wallet/generate
+          method: get
+          request:
+            parameters:
+              paths:
+                blockchain: true
     environment:
       BLOCKCHAIN_NETWORK: testnet
 
@@ -72,12 +72,12 @@ functions:
     handler: handler.sendTransaction
     events:
       - http:
-        path: /{blockchain}/transaction/send-transaction
-        method: post
-        request:
-          parameters:
-            paths:
-              blockchain: true
+          path: /{blockchain}/transaction/send-transaction
+          method: post
+          request:
+            parameters:
+              paths:
+                blockchain: true
     environment:
       BLOCKCHAIN_NETWORK: testnet
 
